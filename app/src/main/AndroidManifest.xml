@@ -22,6 +22,12 @@
             android:name=".SearchUser"
             android:exported="false" />
         <activity
+            android:name=".reset_password"
+            android:exported="false" />
+        <activity
+            android:name=".confirm_email"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
