@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Verify_email_reset_password">
+    tools:context=".Verify_email_rstPass">
 
 
     <androidx.cardview.widget.CardView
@@ -58,7 +58,7 @@
                 android:layout_height="10dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/verify_btn"
+                android:id="@+id/verify_rstPass_mail_btn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Verify"/>
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/resendOTP_tv"
+                    android:id="@+id/resendOTP_rstPass_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Resent OTP code"

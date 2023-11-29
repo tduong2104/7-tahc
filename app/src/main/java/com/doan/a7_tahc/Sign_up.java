@@ -66,7 +66,7 @@ public class Sign_up extends AppCompatActivity {
                     etConfirmPW.setError("Please confirm your password");
                     flag = false;
                 }
-                if(flag && strPassword != strConfirmPW) {
+                if(flag && !strPassword.equals(strConfirmPW)) {
                     //New password does not match. Enter new password again here.
                     Toast.makeText(v.getContext(), "New password does not match. Enter new password again here",
                             Toast.LENGTH_SHORT).show();
