@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchUser">
+    tools:context=".activities.SearchUser">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,71 +16,60 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search User"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_marginStart="10dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/back_btn"/>
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/back_btn"
+            android:text="Select User"
+            android:textColor="@color/off_white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <ImageButton
+            android:id="@+id/back_btn"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/icon_back"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/white"
             android:layout_centerVertical="true"
-            android:id="@+id/back_btn"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/icon_back"
+            app:tint="@color/white"
+            tools:ignore="ImageContrastCheck" />
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_margin="10dp"
-        android:id="@+id/search_user_layout">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="60dp">
 
-        <EditText
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/userRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_rounded_corner"
-            android:layout_margin="10dp"
-            android:hint="Username"
-            android:padding="10dp"
-            android:elevation="4dp"
-            android:layout_toLeftOf="@id/search_user_btn"
-            android:id="@+id/seach_username_input"
+            android:overScrollMode="never"
+            android:visibility="gone"
             />
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/icon_search"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/my_primary"
-            android:padding="4dp"
-            android:layout_margin="10dp"
-            android:id="@+id/search_user_btn"/>
 
-    </RelativeLayout>
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="25dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/textErrorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="15sp"
+            android:visibility="gone"
+            />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/search_user_layout"
-        android:padding="10dp"
-        android:id="@+id/search_user_recycler_view"/>
+    </FrameLayout>
+
 </RelativeLayout>
-
-
-
-
-
-
-
-
-
-

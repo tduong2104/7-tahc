@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1075210049894",
+    "project_id": "tahc-db",
+    "storage_bucket": "tahc-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075210049894:android:cadb7e18cb4eff02f750a7",
+        "android_client_info": {
+          "package_name": "com.doan.a7_tahc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAANhTr23TNv80h1WA5F9aKB31gN-rxHJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

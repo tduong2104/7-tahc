@@ -1,4 +1,4 @@
-package com.doan.a7_tahc;
+package com.doan.a7_tahc.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.doan.a7_tahc.R;
 
 public class reset_password extends AppCompatActivity {
 

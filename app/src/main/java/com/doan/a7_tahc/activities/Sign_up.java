@@ -1,6 +1,8 @@
-package com.doan.a7_tahc;
+package com.doan.a7_tahc.activities;
 
+import android.content.SharedPreferences;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Patterns;
@@ -10,17 +12,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.doan.a7_tahc.R;
+import com.doan.a7_tahc.utilities.Constants;
+import com.doan.a7_tahc.utilities.PreferenceManager;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.checkerframework.checker.units.qual.C;
+
+import java.util.HashMap;
+
 public class Sign_up extends AppCompatActivity {
     Button Signup;
     TextView directToLogin;
-
+    private PreferenceManager preferenceManager;
+    private String encodedImage = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
         directToLogin = findViewById(R.id.directToLogin);
         Signup = findViewById(R.id.signup_btn);
+
+        preferenceManager = new PreferenceManager(getApplicationContext());
 
         directToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +86,30 @@ public class Sign_up extends AppCompatActivity {
                     flag = false;
                 }
                 if(flag) {
-                    Intent intent = new Intent(Sign_up.this, Verify_email.class);
-                    startActivity(intent);
+
+                    FirebaseFirestore database = FirebaseFirestore.getInstance();
+                    HashMap<String,String> user = new HashMap<>();
+                    user.put(Constants.KEY_NAME,etUsername.getText().toString());
+                    user.put(Constants.KEY_EMAIL,etEmail.getText().toString());
+                    user.put(Constants.KEY_PASSWORD,etPassword.getText().toString());
+                    user.put(Constants.KEY_IMAGE,encodedImage);
+                     database.collection(Constants.KEY_COLLECTION_USERS)
+                             .add(user)
+                             .addOnSuccessListener(documentReference -> {
+                                 preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN,true);
+                                 preferenceManager.putString(Constants.KEY_USER_ID,documentReference.getId());
+                                 preferenceManager.putString(Constants.KEY_NAME,etUsername.getText().toString());
+                                 preferenceManager.putString(Constants.KEY_IMAGE,encodedImage);
+                                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                 startActivity(intent);
+                             })
+                             .addOnFailureListener(exception ->{
+                                showToast(exception.getMessage());
+                             });
+
+
+                    
                 }
             }
         });
@@ -91,4 +126,9 @@ public class Sign_up extends AppCompatActivity {
             return false;
         }
     }
+
+    private void showToast(String message){
+        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+    }
+
 }

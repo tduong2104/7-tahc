@@ -1,4 +1,4 @@
-package com.doan.a7_tahc;
+package com.doan.a7_tahc.activities;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.doan.a7_tahc.R;
 
 /**
  * A simple {@link Fragment} subclass.

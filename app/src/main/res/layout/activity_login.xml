@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Login">
+    tools:context=".activities.Login">
 
 
     <androidx.cardview.widget.CardView
@@ -49,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"
                 android:id="@+id/login_email"/>
 
             <View
@@ -66,6 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:imeOptions="actionDone"
                 android:alpha="0.7"
                 android:drawableEnd="@drawable/password_icon"/>
             <View

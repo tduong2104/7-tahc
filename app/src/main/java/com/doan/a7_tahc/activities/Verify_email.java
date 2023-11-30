@@ -1,4 +1,4 @@
-package com.doan.a7_tahc;
+package com.doan.a7_tahc.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,30 +8,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Verify_email_reset_password extends AppCompatActivity {
+import com.doan.a7_tahc.R;
+
+public class Verify_email extends AppCompatActivity {
     Button verify;
     TextView resendOTP;
-    TextView changeEmail;
+    TextView backToSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify_email_reset_password);
+        setContentView(R.layout.activity_verify_email);
 
         verify = findViewById(R.id.verify_btn);
         resendOTP = findViewById(R.id.resendOTP_tv);
-        changeEmail = findViewById(R.id.change_email_tv);
+        backToSignup = findViewById(R.id.back_to_signup);
 
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Verify_email_reset_password.this, reset_password.class);
+                Intent intent = new Intent(Verify_email.this, MainActivity.class);
                 startActivity(intent);
             }
         });
 
-        changeEmail.setOnClickListener(new View.OnClickListener() {
+        backToSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
