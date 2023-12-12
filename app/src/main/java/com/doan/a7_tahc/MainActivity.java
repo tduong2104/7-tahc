@@ -1,5 +1,42 @@
 package com.doan.a7_tahc;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+// tao reference to the firebase database
+//FirebaseDatabase database = FirebaseDatabase.getInstance();
+//DatabaseReference databaseReference = database.getReference("your_database_node");
+//replace "your_database_node" with the desired node name in your firebase realtime database
+
+//tao data
+//YourDataClass data = new YourDataClass(/* pass data parameters */);
+//String key = databaseReference.push().getKey();
+//databaseReference.child(key).setValue(data);
+//replace YourDataClass with the class represennting your data
+
+//read data
+//databaseReference.addValueEventListener(new ValueEventListener() {
+//    @Override
+//    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//            YourDataClass data = snapshot.getValue(YourDataClass.class);
+            // Process retrieved data
+//        }
+//    }
+
+//    @Override
+//    public void onCancelled(@NonNull DatabaseError databaseError) {
+        // Handle error
+//    }
+//});
+
+
+
+//update data:
+//String dataKey = "your_data_key";
+//databaseReference.child(dataKey).setValue(updatedData);    
+//replace "your_data_key" with the key of the data you want to udate
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
