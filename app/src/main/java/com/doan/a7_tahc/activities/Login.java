@@ -34,9 +34,11 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferenceManager = new PreferenceManager(getApplicationContext());
+
         if(preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_IN)){
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
+            finish();
         }
         setContentView(R.layout.activity_login);
 
@@ -46,12 +48,10 @@ public class Login extends AppCompatActivity {
         directToSignup.setOnClickListener(v -> {
             Intent intent = new Intent(Login.this, Sign_up.class);
             startActivity(intent);
+            finish();
         });
 
-        forgetPassword.setOnClickListener(v -> {
-            Intent intent = new Intent(Login.this,confirm_email.class);
-            startActivity(intent);
-        });
+
         login.setOnClickListener( v ->{
             if(isValidSignInDetails()){
                 signin();
@@ -72,9 +72,12 @@ public class Login extends AppCompatActivity {
                         preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN,true);
                         preferenceManager.putString(Constants.KEY_USER_ID,documentSnapshot.getId());
                         preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
+                        preferenceManager.putString(Constants.KEY_EMAIL,documentSnapshot.getString(Constants.KEY_EMAIL));
+                        preferenceManager.putString(Constants.KEY_IMAGE,documentSnapshot.getString(Constants.KEY_IMAGE));
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                        finish();
                     }
                     else{
                         showToast("unable to sign in");

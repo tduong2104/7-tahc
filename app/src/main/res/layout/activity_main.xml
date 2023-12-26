@@ -43,6 +43,7 @@
         android:layout_above="@id/divider"
         android:id="@+id/main_frame_layout"/>
 
+
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
         android:layout_height="2dp"

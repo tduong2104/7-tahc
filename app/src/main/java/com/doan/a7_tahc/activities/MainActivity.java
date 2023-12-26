@@ -3,47 +3,59 @@ package com.doan.a7_tahc.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.doan.a7_tahc.R;
+
 import com.doan.a7_tahc.utilities.Constants;
 import com.doan.a7_tahc.utilities.PreferenceManager;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
 
-import java.lang.ref.PhantomReference;
+import com.google.firebase.firestore.DocumentReference;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import com.google.firebase.messaging.FirebaseMessaging;
+
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    ImageButton searchButton;
+    private ImageButton selectUser;
+    private PreferenceManager preferenceManager;
 
     ChatFragment chatFragment;
     ProfileFragment profileFragment;
-    PreferenceManager preferenceManager;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         preferenceManager = new PreferenceManager(getApplicationContext());
+
         getToken();
         chatFragment = new ChatFragment();
         profileFragment = new ProfileFragment();
+        selectUser = findViewById(R.id.main_search_btn);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        searchButton = findViewById(R.id.main_search_btn);
 
-        searchButton.setOnClickListener((v)->{
-            startActivity(new Intent(MainActivity.this, SearchUser.class));
+        selectUser.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),UsersActivity.class));
         });
+
+
+
+
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -64,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
     }
 
+
+
+
     private void getToken(){
         FirebaseMessaging.getInstance().getToken().addOnSuccessListener(this::updateToken);
     }
@@ -77,4 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
                 .addOnFailureListener(e -> showToast("unable update token"));
     }
+
+
+
+
 }

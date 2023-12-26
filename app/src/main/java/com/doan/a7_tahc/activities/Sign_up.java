@@ -40,6 +40,7 @@ public class Sign_up extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Sign_up.this, Login.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -100,9 +101,11 @@ public class Sign_up extends AppCompatActivity {
                                  preferenceManager.putString(Constants.KEY_USER_ID,documentReference.getId());
                                  preferenceManager.putString(Constants.KEY_NAME,etUsername.getText().toString());
                                  preferenceManager.putString(Constants.KEY_IMAGE,encodedImage);
+                                 preferenceManager.putString(Constants.KEY_EMAIL,etEmail.getText().toString());
                                  Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                                  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                  startActivity(intent);
+                                 finish();
                              })
                              .addOnFailureListener(exception ->{
                                 showToast(exception.getMessage());
