@@ -49,11 +49,11 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
             binding = itemContainerRecentConversionBinding;
         }
     void  setData(ChatMessage chatMessage){
-            if(chatMessage.conversionImage != null && !chatMessage.conversionImage.isEmpty())
-            binding.imageProfile.setImageBitmap(getConversationImage(chatMessage.conversionImage));
-            else binding.imageProfile.setImageResource(R.drawable.img);
             binding.textName.setText(chatMessage.conversionName);
             binding.textRecentMessage.setText(chatMessage.message);
+        //if(chatMessage.conversionImage != null && !chatMessage.conversionImage.isEmpty())
+        //    binding.imageProfile.setImageBitmap(getConversationImage(chatMessage.conversionImage));
+        //else binding.imageProfile.setImageResource(R.drawable.img);
     }
     }
 

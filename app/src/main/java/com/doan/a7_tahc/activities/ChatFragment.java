@@ -1,5 +1,6 @@
 package com.doan.a7_tahc.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -32,7 +33,6 @@ public class ChatFragment extends Fragment {
 
     private PreferenceManager preferenceManager;
     private FirebaseFirestore database;
-    private RecyclerView conversationsRecyclerView;
     private FragmentChatBinding binding;
 
 
@@ -63,6 +63,7 @@ public class ChatFragment extends Fragment {
                 .addSnapshotListener(eventListener);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private final EventListener<QuerySnapshot> eventListener = (value, error) -> {
         if(error != null) return;
         if(value != null){

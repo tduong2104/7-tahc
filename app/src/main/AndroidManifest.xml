@@ -21,34 +21,12 @@
         <activity
             android:name=".activities.UsersActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.ChatAc"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".activities.Verify_email_rstPass"
-            android:exported="false" />
-        <activity
-            android:name=".activities.Chat"
-            android:exported="false" />
+
         <activity
             android:name=".activities.ChatFragment"
             android:exported="false" />
-        <activity
-            android:name=".activities.SearchUser"
-            android:exported="false" />
-        <activity
-            android:name=".activities.reset_password"
-            android:exported="false" />
-        <activity
-            android:name=".activities.confirm_email"
-            android:exported="false" />
-        <activity
-            android:name=".activities.SplashScreen"
-            android:exported="false" />
-        <activity
-            android:name=".activities.Verify_email"
-            android:exported="false" />
+
+
         <activity
             android:name=".activities.Sign_up"
             android:exported="false"

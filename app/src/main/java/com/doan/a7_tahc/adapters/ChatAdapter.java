@@ -103,8 +103,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 binding.imageProfiler.setImageResource(R.drawable.img);
         }
         private Bitmap getBitmapFromEncodedString(String encodedImage){
-            byte[] bytes = Base64.decode(encodedImage,Base64.DEFAULT);
-            return BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+            if(encodedImage != null) {
+                byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
+                return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            }
+            else return null;
         }
     }
 }

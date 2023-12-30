@@ -1,7 +1,7 @@
 package com.doan.a7_tahc.activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 
 
 import android.content.Intent;
@@ -26,7 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     BottomNavigationView bottomNavigationView;
     private ImageButton selectUser;
     private PreferenceManager preferenceManager;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         preferenceManager = new PreferenceManager(getApplicationContext());
@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseMessaging.getInstance().getToken().addOnSuccessListener(this::updateToken);
     }
     private void updateToken(String token){
+        preferenceManager.putString(Constants.KEY_FCM_TOKEN,token);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         DocumentReference documentReference =
                 database.collection(Constants.KEY_COLLECTION_USERS).document(
